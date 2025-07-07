@@ -16,12 +16,12 @@ interface TooltipProps {
 }
 
 interface LabelProps {
-  cx: number;
-  cy: number;
-  midAngle: number;
-  innerRadius: number;
-  outerRadius: number;
-  percent: number;
+  cx?: number;
+  cy?: number;
+  midAngle?: number;
+  innerRadius?: number;
+  outerRadius?: number;
+  percent?: number;
 }
 
 export function CategoryPieChart({ data }: CategoryPieChartProps) {
@@ -51,6 +51,18 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
   };
 
   const CustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: LabelProps) => {
+    // Check if all required properties are defined
+    if (
+      cx === undefined || 
+      cy === undefined || 
+      midAngle === undefined || 
+      innerRadius === undefined || 
+      outerRadius === undefined || 
+      percent === undefined
+    ) {
+      return null;
+    }
+
     if (percent < 0.05) return null; // Don't show labels for slices < 5%
     
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
