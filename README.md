@@ -48,16 +48,6 @@ A simple, responsive web application to track personal finances—built with Nex
 
 ---
 
-## 📸 Screenshots
-
-<!-- Add screenshots here if available -->
-
-yaml
-Copy
-Edit
-
----
-
 ## 🧠 How It Works (No Backend)
 
 This app uses **Local Storage** to persist all data directly in the browser:
@@ -85,9 +75,7 @@ lib/
 models/
 ├─ types.ts // TypeScript types
 
-yaml
-Copy
-Edit
+
 
 ---
 
@@ -95,7 +83,7 @@ Edit
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/personal-finance-visualizer
+git clone https://github.com/adiispam0804/financevisualizer
 
 # Navigate to the project folder
 cd personal-finance-visualizer
