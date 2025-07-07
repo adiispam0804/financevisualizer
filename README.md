@@ -6,7 +6,7 @@ A simple, responsive web application to track personal finances—built with Nex
 
 ## 🚀 Live Demo
 
-🔗 [View Live App](https://your-deployment-url.vercel.app)  
+=
 📁 [GitHub Repository](https://github.com/adiispam0804/financevisualizer)
 
 ---
