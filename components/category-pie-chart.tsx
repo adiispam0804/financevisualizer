@@ -8,6 +8,22 @@ interface CategoryPieChartProps {
   data: CategoryExpense[];
 }
 
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: CategoryExpense;
+  }>;
+}
+
+interface LabelProps {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  percent: number;
+}
+
 export function CategoryPieChart({ data }: CategoryPieChartProps) {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -16,7 +32,7 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
     }).format(value);
   };
 
-  const CustomTooltip = ({ active, payload }: any) => {
+  const CustomTooltip = ({ active, payload }: TooltipProps) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
@@ -34,7 +50,7 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
     return null;
   };
 
-  const CustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
+  const CustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: LabelProps) => {
     if (percent < 0.05) return null; // Don't show labels for slices < 5%
     
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -87,7 +103,7 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
                 <Legend 
                   verticalAlign="bottom" 
                   height={36}
-                  formatter={(value, entry: any) => (
+                  formatter={(value: string, entry: any) => (
                     <span style={{ color: entry.color }}>
                       {value} ({formatCurrency(entry.payload.amount)})
                     </span>

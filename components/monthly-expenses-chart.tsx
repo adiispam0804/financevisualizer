@@ -8,6 +8,14 @@ interface MonthlyExpensesChartProps {
   data: MonthlyExpense[];
 }
 
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: MonthlyExpense;
+  }>;
+  label?: string;
+}
+
 export function MonthlyExpensesChart({ data }: MonthlyExpensesChartProps) {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -16,7 +24,7 @@ export function MonthlyExpensesChart({ data }: MonthlyExpensesChartProps) {
     }).format(value);
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (

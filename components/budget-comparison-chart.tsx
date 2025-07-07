@@ -8,6 +8,15 @@ interface BudgetComparisonChartProps {
   data: BudgetComparison[];
 }
 
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    value: number;
+    payload: BudgetComparison;
+  }>;
+  label?: string;
+}
+
 export function BudgetComparisonChart({ data }: BudgetComparisonChartProps) {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -16,7 +25,7 @@ export function BudgetComparisonChart({ data }: BudgetComparisonChartProps) {
     }).format(value);
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
     if (active && payload && payload.length) {
       const budgeted = payload[0].value;
       const actual = payload[1].value;
